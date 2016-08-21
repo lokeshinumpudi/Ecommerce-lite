@@ -9,14 +9,10 @@
 
 require_once (dirname(__FILE__).'/config/dbinit.php');
 require_once (dirname(__FILE__).'/config/mustacheinit.php');
-
-
 $search_query = "SELECT * FROM items ";
 $items = ["items"=>[],"pagination"=>[]];
-
 //TODO: Increase the search range
 if (isset($_GET['search_item'])){
-
     $user_search =strtolower($_GET['search_item']);
     if (empty($user_search)){
         $user_search = " ";
@@ -33,9 +29,7 @@ if (isset($_GET['search_item'])){
                 }
             }
     }
-
     //now generate where clause for all our range of columns
-
     $where_list = [];
     if (count($final_search_words)>0){
         foreach ($final_search_words as $word){
@@ -45,38 +39,27 @@ if (isset($_GET['search_item'])){
             $where_list[] = " LOWER(description) LIKE '%$word%' ";
         }
     }
-
     //now implore[concat an array with a delimiter into a string] with OR [so it becoms a valid sql][]
-
         $where_clause = implode("OR",$where_list);
-
     if (!empty($where_clause)){
         $search_query .= "WHERE $where_clause";
-
        $search_results =  $dbconn->query($search_query);
-
         if ($search_results){
-
             //clean results format and render the template
             while($row = $search_results->fetch_assoc()){
+                //push row into $items array
                         $items["items"][] = $row;
             }
-
             echo $mustache->render('search',$items);
         }else{
             echo $dbconn->error;
         }
 
     }//if!empty
-
     else{
         //render our page even if its empty query
         echo $mustache->render('search',$items);
     }
-
-
-
-
 }else{
     echo $mustache->render('search',array());
 }
