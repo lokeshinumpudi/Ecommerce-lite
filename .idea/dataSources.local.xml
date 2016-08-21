@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - lokiscart@localhost" uuid="d2cb281c-30bc-442c-aa56-9c43a03c998a">
+      <secret-storage>master_key</secret-storage>
+      <user-name>lokis</user-name>
+      <schema-pattern>lokiscart.*</schema-pattern>
+      <default-schemas>lokiscart.*</default-schemas>
+    </data-source>
+  </component>
+</project>

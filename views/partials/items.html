@@ -1,0 +1,42 @@
+
+<!-- Product Item Heading -->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 style="margin-top: 0px;" class="page-header">{{title}}
+            <small>{{slogan}}</small>
+        </h1>
+    </div>
+</div>
+<!-- /.row -->
+
+<!-- Product Item Row -->
+<div class="row">
+
+    <div class="col-md-6">
+        <img class="img-responsive" src="views/{{img_url}}" alt="{{title}}">
+    </div>
+
+    <div class="col-md-6">
+        <h3>Product Description  <small data-toggle="tooltip" data-placement="top" title="Search this category"><a href="search.php?search_item={{category}}"><span class="label label-info">{{category}}</span></a></small> </h3>
+
+
+
+
+        <div class="ratings" style="padding-left: 0px;">
+           {{rating}}
+        </div>
+
+        <p>
+            {{description}}
+        </p>
+
+        <form action="/user/{{userId}}/cart/items/{{item._id}}" role="form" method="post">
+            <button class="btn btn-primary" type="submit">
+                Add to cart
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </button>
+        </form>
+
+    </div>
+
+</div>

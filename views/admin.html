@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+
+    <style type="text/css">
+        .has-navbar{
+            padding-top: 50px;
+        }
+    </style>
+
+    <link rel="stylesheet" href="libs/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                CART- APP
+            </a>
+        </div>
+
+        <!--<form class="navbar-form navbar-left" action="index.php" role="search">-->
+        <!--<div class="form-group">-->
+        <!--<input type="text" class="form-control" placeholder="Search items">-->
+        <!--</div>-->
+        <!--<button type="submit" class="btn btn-default">Search</button>-->
+        <!--</form>-->
+
+        <a href="index.php" class="btn navbar-btn btn-info">Home</a>
+        <a href="admin.php" class="btn navbar-btn btn-info">Upload</a>
+        <a href="search.php" class="btn navbar-btn btn-info">Search</a>
+
+        <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">OUR_USER</a></p>
+
+
+    </div>
+</nav>
+
+
+<div class="container-fluid has-navbar">
+
+    <div class="page-header text-center">
+        <h2>Uploads</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-3">
+            <form action="admin.php" method="post" name="product_upload" enctype="multipart/form-data" class="form-horizontal">
+
+                <div class="form-group">
+                    <label for="file" class="col-md-2 control-label">File</label>
+
+                    <div class="col-md-8 col-md-offset-1">
+                        <input type="file" id="file" required name="product_img"  alt="product image">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="title" class="col-sm-2 control-label">Title</label>
+                    <div class="col-sm-3 col-sm-offset-1">
+                        <input type="text" class="form-control" required id="title" name="title" placeholder="Title">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="slogan" class="col-sm-2 control-label">Slogan</label>
+                    <div class="col-sm-3 col-sm-offset-1">
+                        <input type="text" class="form-control" required id="slogan" name="slogan" placeholder="Slogan">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="category" class="col-sm-2 control-label">Category</label>
+                    <div class="col-sm-3 col-sm-offset-1">
+                        <input type="text" class="form-control" required id="category" name="category" placeholder="Category">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="price" class="col-sm-2 control-label">Price</label>
+                    <div class="col-sm-3 col-sm-offset-1">
+                        <input type="number" class="form-control" required id="price" name="price" placeholder="Price">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description" class=" col-sm-2 control-label">Description</label>
+
+                    <div class="col-sm-8 col-sm-offset-1">
+
+                        <textarea name="description" id="description" required name="description" placeholder="Description " cols="50" rows="5"></textarea>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <button type="submit" name="product_submit" class="btn btn-primary btn-lg">Upload</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+<script src="libs/jquery.min.js" charset="utf-8"></script>
+<script src="libs/bootstrap.min.js" charset="utf-8"></script>
+</body>
+</html>
