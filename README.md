@@ -7,6 +7,8 @@ A minimal E-commerce application with Pagination,Accounts,Search,Upload items wr
 > - Now start your local server ex [Wampserver or Xampp] 
 
 # Project Samples
-![Home](./sample-snapshots/home.png)
-![Home](./sample-snapshots/search.png)
-![Home](./sample-snapshots/uploads.png)
+![Home](./sample-snapshots/home.png "Home page") 
+![Search](./sample-snapshots/search.png "Search page")
+![Uploads](./sample-snapshots/uploads.png "Uploads page")
+![Pagination](./sample-snapshots/pagination.png "Pagination")
+
