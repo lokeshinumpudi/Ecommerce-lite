@@ -1,0 +1,97 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style type="text/css">
+        #search_input{
+            margin-right: 100px;
+            width:100%;
+        }
+
+        .has-nav{
+            padding-top: 70px;
+        }
+
+
+        form[role="search"]{
+            margin-right: 30%;
+        }
+    </style>
+
+    <link rel="stylesheet" href="libs/bootstrap.min.css">
+</head>
+<body>
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.php">
+                CART- APP
+            </a>
+        </div>
+        <a href="index.php" class="btn navbar-btn btn-info">Home</a>
+        <a href="admin.php" class="btn navbar-btn btn-info">Upload</a>
+
+
+        <!--<form class="navbar-form navbar-right" action="search.php" method="get" role="search">-->
+            <!--<div class="form-group">-->
+                <!--<input type="text" id="search_input" class="form-control" name="search_item" placeholder="Search title,slogan,category,description">-->
+            <!--</div>-->
+            <!--<button type="submit" class="btn btn-default">Search</button>-->
+
+
+        <!--</form>-->
+        <p class="navbar-text navbar-right" id="loggedInUserName">Signed in as <a href="#" class="navbar-link"></a></p>
+
+
+    </div>
+</nav>
+
+
+
+<div class="container-fluid has-nav">
+
+    <!--when no results-->
+    {{^items}}
+    <div class="text-center">
+        <h3 class="jumbotron">
+            NO RESULTS FOUND !
+        </h3>
+    </div>
+    {{/items}}
+
+    <div class="row">
+
+        <div class="col-md-8 col-md-offset-2 items">
+            {{#items}}  {{>partials/cartitems}}  {{/items}}
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<script src="libs/jquery.min.js"></script>
+<script src="libs/bootstrap.min.js"></script>
+
+
+<script>
+    $(function () {
+        var username = window.localStorage.getItem("username");
+        if (username){
+            console.log(window.localStorage.getItem("username"));
+            $("#loggedInUserName > a").text(username);
+
+        };
+    });
+</script>
+</body>
+</html>

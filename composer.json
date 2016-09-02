@@ -1,11 +1,11 @@
 {
-    "name": "lowkeys/E-commerceApp",
+    "name": "lowkeys/first-project",
     "require": {
         "mustache/mustache": "^2.10"
     },
     "authors": [
         {
-            "name": "lokesh chandra",
+            "name": "lokis",
             "email": "war.cratossai@gmail.com"
         }
     ]

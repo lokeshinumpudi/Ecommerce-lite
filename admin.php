@@ -35,7 +35,7 @@ if (isset($_POST['product_submit'])){
         $product_insert_sql = $product_insert_sql. "VALUES (0,'$title','$slogan','$description','$category','$img_url','$price')";
 
         $insert_result = $dbconn->query($product_insert_sql);
-//on success redirect to uploaded product page
+
         if ($insert_result){
             header("Location:index.php?category=$category");
         }else{

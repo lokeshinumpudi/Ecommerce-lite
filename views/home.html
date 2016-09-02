@@ -7,6 +7,12 @@
 	<title></title>
 
 	<link rel="stylesheet" href="libs/bootstrap.min.css">
+    <style type="text/css">
+        .hide{
+            display: none;
+            opacity:0;
+        }
+    </style>
 </head>
 
 <body>
@@ -29,10 +35,10 @@
         <a href="admin.php" class="btn navbar-btn btn-info">Upload</a>
         <a href="search.php" class="btn navbar-btn btn-info">Search</a>
 
-
-		<p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">OUR_USER</a></p>
-
-
+        <a href="cart.php" id="cartbtn" class="btn navbar-btn btn-info">cart</a>
+        <p class="navbar-text navbar-right" id="loggedInUserName">Signed in as <a href="#" class="navbar-link"></a></p>
+        <a href="#" class="btn navbar-btn btn-info" id="logout">logout</a>
+        <a href="login.html" class="btn navbar-btn btn-info" id="login">login</a>
 	</div>
 </nav>
 
@@ -50,7 +56,7 @@
 					{{#categories}} {{>partials/category}} {{/categories}}
 				</ul>
 			</div>
-			<div class="col-md-9">
+			<div class="col-md-9 items">
                 {{#items}}  {{>partials/items}}  {{/items}}
 			</div>
 		</div>
@@ -89,7 +95,82 @@
 
     <script type="text/javascript">
         $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
+
+
+            $("#logout").click(function (e) {
+                e.preventDefault();
+                    window.localStorage.removeItem("username")
+                window.localStorage.removeItem("userId");
+                window.location.reload();
+            })
+            $('[data-toggle="tooltip"]').tooltip();
+                var username = window.localStorage.getItem("username");
+                var userId = window.localStorage.getItem("userId");
+            if (username){
+                $("#login").addClass("hide");
+                console.log(window.localStorage.getItem("username"));
+                $("#loggedInUserName > a").text(username);
+
+            }else{
+                //not logged in so show login
+
+                $("#login").removeClass("hide");
+            }
+
+            $("#cartbtn").click(function (e) {
+                e.preventDefault();
+                var cartbtn = $(this);
+
+                //get the users id
+
+                if (userId){
+
+                    window.location = "cart.php?userid=" + userId;
+                }else{
+                    alert("Login to view cart");
+                }
+
+            })
+
+            //click listeners to all buttons inside the items container
+
+            $(".items  button").each(function(){
+
+                var eachbtn = $(this);
+
+                eachbtn.click(function(e){
+
+                    if (!username){
+
+                        alert("LOGIN to add to cart");
+                        return;
+                    }
+
+                    e.preventDefault();
+
+                    var productid = $(e.target).attr("btn-data-id");
+                    console.log();
+                    eachbtn.button("loading");
+                    //call cart.php
+
+                    var configobj = {username:username,productId:productid,userId:userId}
+
+                    $.ajax({
+                        url:"cart.php",
+                        method:"POST",
+                        data:configobj
+
+                    }).done(function (data) {
+                            console.log(data);
+                    });
+
+
+
+                });
+
+            });//each
+
+
         })
     </script>
 

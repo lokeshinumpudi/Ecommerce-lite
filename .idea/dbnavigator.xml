@@ -41,9 +41,6 @@
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
   </component>
-  <component name="DBNavigator.Project.FileConnectionMappingManager">
-    <mapping file-url="file://$PROJECT_DIR$/lokiscart.sql" connection-id="4081cea4-1494-4842-9dc7-093d70997bd9" current-schema="LOKIS" />
-  </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />
     <execution-history>

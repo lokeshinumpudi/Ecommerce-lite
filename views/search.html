@@ -16,7 +16,7 @@
 
 
         form[role="search"]{
-            margin-right: 40%;
+            margin-right: 30%;
         }
     </style>
 
@@ -35,13 +35,18 @@
         <a href="index.php" class="btn navbar-btn btn-info">Home</a>
         <a href="admin.php" class="btn navbar-btn btn-info">Upload</a>
 
+
         <form class="navbar-form navbar-right" action="search.php" method="get" role="search">
         <div class="form-group">
         <input type="text" id="search_input" class="form-control" name="search_item" placeholder="Search title,slogan,category,description">
         </div>
         <button type="submit" class="btn btn-default">Search</button>
+
+
         </form>
-        <!--<p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">OUR_USER</a></p>-->
+        <p class="navbar-text navbar-right" id="loggedInUserName">Signed in as <a href="#" class="navbar-link"></a></p>
+
+
     </div>
 </nav>
 
@@ -65,7 +70,7 @@
                 <!--{{#categories}} {{>partials/category}} {{/categories}}-->
             </ul>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9 items">
             {{#items}}  {{>partials/items}}  {{/items}}
 
 
@@ -99,8 +104,29 @@
 
 <script type="text/javascript">
     $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
+        $('[data-toggle="tooltip"]').tooltip();
+
+        if (window.localStorage.getItem("username")){
+            console.log(window.localStorage.getItem("username"));
+            $("#loggedInUserName > a").text(window.localStorage.getItem("username"));
+
+        }//if
+
+        //click listeners to all buttons inside the items container
+
+        $(".items  button").each(function(){
+
+            var eachbtn = $(this);
+
+            eachbtn.click(function(e){
+
+                e.preventDefault();
+                console.log($(e.target).attr("btn-data-id"));
+            });
+
+        });//each
+
+    });//jquery
 </script>
 </body>
 </html>

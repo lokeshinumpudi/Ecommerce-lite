@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source name="MySQL - lokiscart@localhost" uuid="d2cb281c-30bc-442c-aa56-9c43a03c998a">
+  <data-source name="lokis" uuid="13adee4f-7614-4b75-8ac3-93383c9b8791">
     <database-info product="MySQL" version="5.7.9" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
@@ -8,46 +8,87 @@
     <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
     <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
       <schema id="1" name="lokiscart"/>
-      <table id="2" parent="1" name="items"/>
-      <column id="3" parent="2" name="_id">
+      <table id="2" parent="1" name="accounts"/>
+      <table id="3" parent="1" name="cart"/>
+      <table id="4" parent="1" name="items"/>
+      <column id="5" parent="2" name="_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="6" parent="2" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+      </column>
+      <column id="7" parent="2" name="password">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="8" parent="2" name="is_admin">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="9" parent="2" name="PRIMARY">
+        <columns>_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="10" parent="3" name="_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="11" parent="3" name="productId">
+        <mandatory>1</mandatory>
+        <data-type>int(10)</data-type>
+      </column>
+      <column id="12" parent="3" name="userid">
+        <mandatory>1</mandatory>
+        <data-type>int(10)</data-type>
+      </column>
+      <key id="13" parent="3" name="PRIMARY">
+        <columns>_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="14" parent="4" name="_id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="4" parent="2" name="title">
+      <column id="15" parent="4" name="title">
         <mandatory>1</mandatory>
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="5" parent="2" name="slogan">
+      <column id="16" parent="4" name="slogan">
         <mandatory>1</mandatory>
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="6" parent="2" name="description">
+      <column id="17" parent="4" name="description">
         <mandatory>1</mandatory>
         <data-type>varchar(500)</data-type>
       </column>
-      <column id="7" parent="2" name="category">
+      <column id="18" parent="4" name="category">
         <mandatory>1</mandatory>
         <data-type>varchar(30)</data-type>
       </column>
-      <column id="8" parent="2" name="img_url">
+      <column id="19" parent="4" name="img_url">
         <mandatory>1</mandatory>
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="9" parent="2" name="price">
+      <column id="20" parent="4" name="price">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <index id="10" parent="2" name="_id">
+      <index id="21" parent="4" name="_id">
         <columns>_id</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="11" parent="2" name="PRIMARY">
+      <key id="22" parent="4" name="PRIMARY">
         <columns>_id</columns>
         <primary>1</primary>
       </key>
-      <key id="12" parent="2" name="_id">
+      <key id="23" parent="4" name="_id">
         <columns>_id</columns>
         <underlying-index>_id</underlying-index>
       </key>

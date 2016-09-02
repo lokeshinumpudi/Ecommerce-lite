@@ -13,7 +13,6 @@ $category_get_available=false;
 $results_per_page = 4;
 function gen_home_page_sql_query(){
     global $home_page_sql,$results_per_page,$category_get_available,$category_selected;
-
     //generate pagination links as array structure so we can render in html template
     $page =  isset($_GET['page']) ? $_GET['page'] : 1;
     //this will decide how many results we have to skip in our db query
@@ -28,8 +27,10 @@ function gen_home_page_sql_query(){
         $home_page_sql = "SELECT * FROM items ORDER BY _id ASC "."LIMIT $skip,$results_per_page";
         $category_get_available= false;
     }
-}
 
+
+
+}
 gen_home_page_sql_query();
 
 //our db queries
@@ -107,6 +108,7 @@ function gen_pagination(){
 gen_pagination();
 
 
+//var_dump($items);
 //now re render our template with the data we extracted from sql
 echo $mustache->render('home',$items);
 
